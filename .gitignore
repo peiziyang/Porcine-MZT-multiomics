@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Logs produced by the pipeline
+*.log
+
+# Large raw / intermediate binaries (download from GEO/SRA instead)
+data/raw/
+*.gz
+*.VHDX
+*.fastq
+*.fastq.gz
+
+# OS
+.DS_Store
+Thumbs.db
