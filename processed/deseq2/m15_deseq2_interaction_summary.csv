@@ -1,0 +1,5 @@
+coefficient,n_sig_padj005,n_sig_absLFC1
+main_condition,30,30
+stage[T.2cell]:condition[T.PA],67,67
+stage[T.4cell]:condition[T.PA],219,219
+stage[T.8cell]:condition[T.PA],376,376

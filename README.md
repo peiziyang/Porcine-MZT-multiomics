@@ -62,17 +62,29 @@ pip install -r requirements.txt
 
 ## Scripts (`code/`)
 
-| Script | Purpose |
+The `code/` directory contains the full analysis pipeline (145 scripts),
+organized by analysis module. The main modules are:
+
+| Module | Purpose |
 | --- | --- |
-| `cgmap_to_gene_v2.py` | Vectorized CpG→gene mapping using numpy (promoter statistics). |
-| `generate_s15_cpg_qc.py` | Generates CpG-quality-control report (Supplementary Table 15). |
-| `md_to_docx.py` | Converts markdown tables into the .docx supplementary file. |
-| `salmon_batch_wsl2.sh` | Batch salmon quantification of RNA-seq samples. |
-| `rerun_failed.sh` | Re-runs the 2 failed PA 2-cell samples. |
-| `run_pipeline.sh` | Orchestrates SRA→fastq→salmon re-run for the 2 failed samples. |
+| `m2_*.py` | Data integration — Harmony batch correction and atlas projection |
+| `m3_*.py` | PA/IVF bulk RNA-seq differential expression and validation |
+| `m4_*.py` | MOFA+ multi-omics integration and promoter CpG analysis |
+| `m5_*.py` | Developmental trajectory and Waddington optimal transport |
+| `m6_*.py` | Transcriptome-based metabolic scoring |
+| `m7_*.py` / `m9_*.py` | Gene-regulatory network (SCENIC) and TF/lineage analysis |
+| `m8_*.py` | RNA-only MOFA+ robustness analysis |
+| `m10_*.py` / `m11_*.py` | CGmap processing and CGmap-to-MOFA integration |
+| `m12–m16` | Methylation matrix, R², MOFA+ comparison, DESeq2, GO enrichment |
+| `m19_*.py` | In-silico regulon perturbation |
+| `m20_*.py` | SHAP donor classifier |
+| `m21–m24` | Cross-species, trajectory, PA validation, F1 stability |
+| `regenerate_*.py` | Final publication-figure regeneration |
+| `*.sh` | SRA→fastq→salmon batch quantification (WSL2) |
 
 > Note: the MOFA+ factor training step produces the tables in `processed/`
-> (e.g. `mofa_factors.csv`, `mofa_weights_RNA.csv`). MOFA+ can be run with
+> (e.g. `m4_mofa/mofa_multiomics_factors_v2.csv`,
+> `m4_mofa/mofa_multiomics_weights_RNA_v2.csv`). MOFA+ can be run with
 > `mofapy2` (Python) or the `MOFA2` Bioconductor R package; the trained outputs
 > are provided here so the downstream analyses are fully reproducible.
 
